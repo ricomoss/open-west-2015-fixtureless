@@ -3,7 +3,7 @@ Open West 2015 - django-fixtureless
 
 This repository was created to support the presentation given at Open West 2015.  You can find the presentation .pdf included in this repository.
 
-The bulk of this repository is an example website that provides a few use-cases for how (and why) you should use `django-fixtureless <https://github.com/ricomoss/django-fixtureless>`_ when building your Django projects.  Note this example is using Python 3 but should be Python 2.7+ compatible.
+The bulk of this repository is an example website that provides a few use-cases for how (and why) you should use `django-fixtureless <https://www.github.com/ricomoss/django-fixtureless/>`_ when building your Django projects.  Note this example is using Python 3 but should be Python 2.7+ compatible.
 
 Installation
 ============
