@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Mages</h1>
+        </div>
+    </div>
+
+    {% for mage_info in data %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>{{ mage_info.name|upper }}</h2>
+                    {% if mage_info.magic_type %}
+                        <h3>Magic Type: <a class='btn btn-primary'>{{ mage_info.magic_type }}</a></h3>
+                    {% endif %}
+                    {% if mage_info.friends %}
+                        <div class="col-md-offset-1">
+                            <h3>Unicorn Friends:</h3>
+                        </div>
+                        {% for friend in mage_info.friends %}
+                            <div class="col-md-offset-2">
+                                <h4>{{ friend.name|upper }} - Age: <a class="btn btn-primary btn-sm">{{ friend.age }}</a></h4>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
