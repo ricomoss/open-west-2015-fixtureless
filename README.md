@@ -1,1 +1,71 @@
-# open-west-2015-fixtureless
+Open West 2015 - django-fixtureless
+===================================
+
+This repository was created to support the presentation given at Open West 2015.  You can find the presentation .pdf included in this repository.
+
+The bulk of this repository is an example website that provides a few use-cases for how (and why) you should use `django-fixtureless <https://help.github.com/articles/generating-ssh-keys/>`_ when building your Django projects.  Note this example is using Python 3 but should be Python 2.7+ compatible.
+
+Installation
+============
+
+To begin you can clone this repository and setup Django using the following instructions.
+
+Linux Installation (Debian/Ubuntu)
+----------------------------------
+
+.. note::
+
+   The following will assume you are cloning the sourcecode to **~/Projects/open-west-2015-fixtureless**.  If you are cloning to a different location, you will need to adjust these instructions accordingly.
+
+.. note::
+
+   A dollar sign ($) indicates a terminal prompt, as your user, not root.
+
+1.  Clone the source::
+
+        $ cd ~/Projects
+        $ git clone git@github.com:ricomoss/open-west-2015-fixtureless.git
+
+2. Install some required packages::
+
+        $ sudo apt-get install python python-dev python-pip
+
+3.  Install virtualenv and virtualenvwrapper::
+
+        $ pip install virtualenv
+        $ pip install virtualenvwrapper
+
+4.  Add the following to your **~/.bashrc** or **~/.zshrc** file::
+
+        source /usr/local/bin/virtualenvwrapper.sh
+
+5.  Type the following::
+
+        $ source /usr/local/bin/virtualenvwrapper.sh
+
+6.  Create your virtualenv (for Python 3)::
+
+        $ mkvirtualenv owf -p /usr/bin/python3
+
+
+.. note::
+
+    If you are using any virtualenv version prior to 1.10 it is strongly
+    recommended that you upgrade to the most recent version (especially
+    if you want to use Python 3).
+
+7.  Add the following to the end of the file
+    **~/.virtualenvs/owf/bin/postactivate**::
+
+        export DJANGO_SETTINGS_MODULE=owc_fixtureless.settings
+        export PYTHONPATH=$PYTHONPATH:~/Projects/owc_fixtureless/
+
+8.  Activate the virtualenv::
+
+        $ workon owf
+
+9.  Install the required Python libraries (ensure you're within the new virtual environment)::
+
+        (owf)$ pip install -r ~/django-fixtureless/requirements.pip
+
+
