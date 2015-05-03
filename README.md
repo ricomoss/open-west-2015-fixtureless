@@ -28,7 +28,7 @@ Linux Installation (Debian/Ubuntu)
 
 2. Install some required packages::
 
-        $ sudo apt-get install python python-dev python-pip
+        $ sudo apt-get install python3 python3-dev python-pip
 
 3.  Install virtualenv and virtualenvwrapper::
 
@@ -58,14 +58,24 @@ Linux Installation (Debian/Ubuntu)
     **~/.virtualenvs/owf/bin/postactivate**::
 
         export DJANGO_SETTINGS_MODULE=owc_fixtureless.settings
-        export PYTHONPATH=$PYTHONPATH:~/Projects/owc_fixtureless/
+        export PYTHONPATH=~/Projects/owc_fixtureless/
 
 8.  Activate the virtualenv::
 
         $ workon owf
 
-9.  Install the required Python libraries (ensure you're within the new virtual environment)::
+9.  Install the required Python libraries (ensure you're within the new virtual environment).::
 
         (owf)$ pip install -r ~/django-fixtureless/requirements.pip
 
+10.  Sync the database (follow the Django instructions).::
 
+        (owf)$ python3 ~/Projects/owc_fixtureless/owc_fixtureless/manage.py syncdb
+        
+11.  Start the runserver.::
+
+        (owf)$ python3 ~/Projects/owc_fixtureless/owc_fixtureless/manage.py runserver
+        
+12.  Open your browser and see your site.::
+
+        http://127.0.0.1:8000/
