@@ -58,7 +58,7 @@ Linux Installation (Debian/Ubuntu)
     **~/.virtualenvs/owf/bin/postactivate**::
 
         export DJANGO_SETTINGS_MODULE=owc_fixtureless.settings
-        export PYTHONPATH=~/Projects/owc_fixtureless/
+        export PYTHONPATH=~/Projects/open-west-2015-fixtureless/owc_fixtureless
 
 8.  Activate the virtualenv::
 
@@ -66,15 +66,15 @@ Linux Installation (Debian/Ubuntu)
 
 9.  Install the required Python libraries (ensure you're within the new virtual environment).::
 
-        (owf)$ pip install -r ~/django-fixtureless/requirements.pip
+        (owf)$ pip install -r ~/open-west-2015-fixtureless/owc_fixtureless/requirements.pip
 
 10.  Sync the database (follow the Django instructions).::
 
-        (owf)$ python3 ~/Projects/owc_fixtureless/owc_fixtureless/manage.py syncdb
+        (owf)$ python3 ~/Projects/open-west-2015-fixtureless/owc_fixtureless/owc_fixtureless/manage.py syncdb
         
 11.  Start the runserver.::
 
-        (owf)$ python3 ~/Projects/owc_fixtureless/owc_fixtureless/manage.py runserver
+        (owf)$ python3 ~/Projects/open-west-2015-fixtureless/owc_fixtureless/owc_fixtureless/manage.py runserver
         
 12.  Open your browser and see your site.::
 
