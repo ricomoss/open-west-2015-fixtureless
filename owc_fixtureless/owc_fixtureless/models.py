@@ -8,6 +8,16 @@ class Mage(models.Model):
     magic_type = models.CharField(
         max_length=255, choices=constants.MAGIC_CHOICES)
 
+    @property
+    def brothers_in_arms(self):
+        """
+        Return a QuerySet object containing all other the mages who share the
+        same magic_type as this mage.
+        :return: QuerySet
+        """
+        return Mage.objects.filter(magic_type=self.magic_type).exclude(
+            pk=self.pk)
+
 
 class Unicorn(models.Model):
     name = models.CharField(max_length=40)

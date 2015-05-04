@@ -1,12 +1,18 @@
+ARCANE = 'arcane'
+BLACK = 'black'
+FIRE = 'fire'
+FROST = 'frost'
+NATURE = 'nature'
+WHITE = 'white'
 
 
 MAGIC_CHOICES = (
-    ('arcane', 'Arcane'),
-    ('black', 'Black'),
-    ('fire', 'Fire'),
-    ('frost', 'Frost'),
-    ('nature', 'Nature'),
-    ('white', 'White'),
+    (ARCANE, 'Arcane'),
+    (BLACK, 'Black'),
+    (FIRE, 'Fire'),
+    (FROST, 'Frost'),
+    (NATURE, 'Nature'),
+    (WHITE, 'White'),
 )
 
 HIGH_DETAIL_COUNT_LIMIT = 15
