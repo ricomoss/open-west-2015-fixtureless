@@ -1,5 +1,6 @@
 import random
 import itertools
+from optparse import make_option
 
 from fixtureless import Factory
 from django.core.management.base import BaseCommand
@@ -11,6 +12,31 @@ class Command(BaseCommand):
     help = 'Populate the local DB with development data.'
     args = '<mage count> <unicorn count>'
 
+    option_list = BaseCommand.option_list + (
+        make_option(
+            '--use_custom',
+            action='store_true',
+            default=False,
+            help='Have django-fixtureless use custom values instead of '
+                 'random data. (default=False)',
+        ),
+        make_option(
+            '--mage_count',
+            type='int',
+            default=5,
+            help='The number of mages you want in your system. (default=5)',
+        ),
+        make_option(
+            '--unicorn_count',
+            type='int',
+            default=5,
+            help='The number of unicorns you want in your system. (default=5)',
+        ),
+    )
+
+    MAGE_NAMES = ['rose', 'henry', 'alex', 'erica', 'ashley', 'bob', 'ted']
+    UNICORN_NAMES = ['charlie', 'stephanie', 'shannon', 'pat', 'brian']
+
     def __init__(self):
         models.Mage.objects.all().delete()
         models.Unicorn.objects.all().delete()
@@ -18,31 +44,33 @@ class Command(BaseCommand):
         super().__init__()
 
     def _generate_mages(self, mage_count):
-        mage_names = ['rose', 'henry', 'alex', 'erica', 'ashley', 'bob', 'ted']
-        initial_list = list()
-        for _ in itertools.repeat(None, mage_count):
-            initial_list.append({
-                'name': random.choice(mage_names)
-            })
-        self.factory.create(models.Mage, initial_list)
+        if self.use_custom:
+            initial_list = list()
+            for _ in itertools.repeat(None, mage_count):
+                initial_list.append({
+                    'name': random.choice(self.MAGE_NAMES)
+                })
+            self.factory.create(models.Mage, initial_list)
+        else:
+            self.factory.create(models.Mage, mage_count)
 
     def _generate_unicorns(self, unicorn_count):
-        unicorn_names = ['charlie', 'stephanie', 'shannon', 'pat', 'brian']
-        initial_list = list()
-        for _ in itertools.repeat(None, unicorn_count):
-            initial_list.append({
-                'name': random.choice(unicorn_names),
-                'age': random.randint(1, 50),
-                'best_friend': random.choice(models.Mage.objects.all())
-            })
-        self.factory.create(models.Unicorn, initial_list)
+        if self.use_custom:
+            initial_list = list()
+            for _ in itertools.repeat(None, unicorn_count):
+                initial_list.append({
+                    'name': random.choice(self.UNICORN_NAMES),
+                    'age': random.randint(1, 50),
+                    'best_friend': random.choice(models.Mage.objects.all())
+                })
+            self.factory.create(models.Unicorn, initial_list)
+        else:
+            self.factory.create(models.Unicorn, unicorn_count)
 
     def handle(self, *args, **options):
-        if len(args) < 2:
-            print(self.usage('./manage.py generate_dev_data'))
-            return
+        self.use_custom = options['use_custom']
 
-        mage_count = int(args[0])
-        unicorn_count = int(args[1])
+        mage_count = options['mage_count']
+        unicorn_count = options['unicorn_count']
         self._generate_mages(mage_count)
         self._generate_unicorns(unicorn_count)
