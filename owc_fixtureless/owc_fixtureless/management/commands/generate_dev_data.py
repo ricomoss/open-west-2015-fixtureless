@@ -55,17 +55,16 @@ class Command(BaseCommand):
             self.factory.create(models.Mage, mage_count)
 
     def _generate_unicorns(self, unicorn_count):
-        if self.use_custom:
-            initial_list = list()
-            for _ in itertools.repeat(None, unicorn_count):
-                initial_list.append({
-                    'name': random.choice(self.UNICORN_NAMES),
-                    'age': random.randint(1, 50),
-                    'best_friend': random.choice(models.Mage.objects.all())
-                })
-            self.factory.create(models.Unicorn, initial_list)
-        else:
-            self.factory.create(models.Unicorn, unicorn_count)
+        initial_list = list()
+        for _ in itertools.repeat(None, unicorn_count):
+            initial_dict = {
+                'best_friend': random.choice(models.Mage.objects.all())
+            }
+            if self.use_custom:
+                initial_dict['name']= random.choice(self.UNICORN_NAMES)
+                initial_dict['age'] = random.randint(1, 50)
+            initial_list.append(initial_dict)
+        self.factory.create(models.Unicorn, initial_list)
 
     def handle(self, *args, **options):
         self.use_custom = options['use_custom']
