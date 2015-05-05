@@ -22,6 +22,6 @@ class MageTestCase(TestCase):
         self.assertEqual(mage_1.brothers_in_arms.count(), expected)
 
         # Let's add another mage with the same magic_type
-        self.factory.create(models.Mage, {'magic_type': constants.BLACK})
-        expected = 0
+        self.factory.create(models.Mage, {'magic_type': constants.ARCANE})
+        expected = 1
         self.assertEqual(mage_1.brothers_in_arms.count(), expected)
