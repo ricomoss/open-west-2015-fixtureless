@@ -70,11 +70,11 @@ Linux Installation (Debian/Ubuntu)
 
 10.  Sync the database (follow the Django instructions).::
 
-        (owf)$ python3 ~/Projects/open-west-2015-fixtureless/owc_fixtureless/owc_fixtureless/manage.py syncdb
+        (owf)$ python ~/Projects/open-west-2015-fixtureless/owc_fixtureless/manage.py syncdb
         
 11.  Start the runserver.::
 
-        (owf)$ python3 ~/Projects/open-west-2015-fixtureless/owc_fixtureless/owc_fixtureless/manage.py runserver
+        (owf)$ python ~/Projects/open-west-2015-fixtureless/owc_fixtureless/manage.py runserver
         
 12.  Open your browser and see your site.::
 
