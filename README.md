@@ -66,7 +66,7 @@ Linux Installation (Debian/Ubuntu)
 
 9.  Install the required Python libraries (ensure you're within the new virtual environment).::
 
-        (owf)$ pip install -r ~/open-west-2015-fixtureless/owc_fixtureless/requirements.pip
+        (owf)$ pip install -r ~/open-west-2015-fixtureless/requirements.pip
 
 10.  Sync the database (follow the Django instructions).::
 
