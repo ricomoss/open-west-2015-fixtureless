@@ -32,6 +32,12 @@ class Command(BaseCommand):
             default=5,
             help='The number of unicorns you want in your system. (default=5)',
         ),
+        make_option(
+            '--clear_db',
+            action='store_true',
+            default=False,
+            help='Clear the database to start fresh.',
+        ),
     )
 
     MAGE_NAMES = ['rose', 'henry', 'alex', 'erica', 'ashley', 'bob', 'ted']
@@ -68,6 +74,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.use_custom = options['use_custom']
+
+        if options['clear_db']:
+            return
 
         mage_count = options['mage_count']
         unicorn_count = options['unicorn_count']
