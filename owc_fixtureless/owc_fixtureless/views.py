@@ -46,7 +46,7 @@ class MageView(View):
             })
         return context
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         mages = Mage.objects.all()
         context = {'data': self._get_context(mages)}
         return render(request, self.template, context)
