@@ -1,27 +1,28 @@
+{% load static from staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="django-fixtureless example">
-    <meta name="author" content="Rico Cordova">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="django-fixtureless example">
+        <meta name="author" content="Rico Cordova">
 
-    <title>Open West Conference 2015 - django-fixtureless</title>
+        <title>Open West Conference 2015 - django-fixtureless</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/jumbotron.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static "css/jumbotron.css" %}" rel="stylesheet">
+    </head>
 
-  </head>
+    <body>
+        {% block content %}
+        {% endblock %}
 
-  <body>
-  {% block content %}
-  {% endblock %}
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </body>
 </html>
